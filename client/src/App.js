@@ -36,6 +36,9 @@ class App extends Component {
       hashParams[e[1]] = decodeURIComponent(e[2]);
       e = r.exec(q);
     }
+
+    window.history.replaceState("", "Spotify Lyrics", "/");
+
     return hashParams;
   }
 
@@ -51,18 +54,18 @@ class App extends Component {
           optimizeQuery: true,
         };
 
-        getLyrics(options).then((lyrics) =>
-          this.setState({
-            nowPlaying: {
-              name: response.item.name,
-              artist: response.item.artists[0].name,
-              albumArt: response.item.album.images[0].url,
-              lyrics: lyrics,
-            },
-          })
+        getLyrics(options).then(
+          (lyrics) =>
+            this.setState({
+              nowPlaying: {
+                name: response.item.name,
+                artist: response.item.artists[0].name,
+                albumArt: response.item.album.images[0].url,
+                lyrics: lyrics,
+              },
+            }),
+          window.scrollTo(0, 0)
         );
-
-        window.scrollTo(0, 0);
       }
     });
   }
