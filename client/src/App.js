@@ -93,7 +93,7 @@ class App extends Component {
           </div>
         ) : (
           <div className="log-in">
-            <a href={"http://localhost:" + process.env.REACT_APP_AUTH_PORT + "/login"} className="log-in-button">
+            <a href={process.env.REACT_APP_AUTH_ADDR + "/login"} className="log-in-button">
               Login to Spotify
             </a>
           </div>
