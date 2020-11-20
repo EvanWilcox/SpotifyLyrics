@@ -110,11 +110,12 @@ app.get("/callback", function (req, res) {
           console.log(body);
         });
 
+        backURL = req.header("Referer") || "/";
+
         // we can also pass the token to the browser to make requests from there
         res.redirect(
-          "http://" +
-            host +
-            ":3000/#" +
+          backURL +
+            "#" +
             querystring.stringify({
               access_token: access_token,
               refresh_token: refresh_token,
@@ -122,7 +123,8 @@ app.get("/callback", function (req, res) {
         );
       } else {
         res.redirect(
-          "/#" +
+          backURL +
+            "/#" +
             querystring.stringify({
               error: "invalid_token",
             })

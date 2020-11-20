@@ -46,26 +46,28 @@ class App extends Component {
     const { nowPlaying } = this.state;
 
     spotifyApi.getMyCurrentPlaybackState().then((response) => {
-      if (response.item.name !== nowPlaying.name) {
-        const options = {
-          apiKey: process.env.REACT_APP_GENIUS_API_KEY,
-          title: response.item.name,
-          artist: response.item.artists[0].name,
-          optimizeQuery: true,
-        };
+      if (response) {
+        if (response.item.name !== nowPlaying.name) {
+          const options = {
+            apiKey: process.env.REACT_APP_GENIUS_API_KEY,
+            title: response.item.name,
+            artist: response.item.artists[0].name,
+            optimizeQuery: true,
+          };
 
-        getLyrics(options).then(
-          (lyrics) =>
-            this.setState({
-              nowPlaying: {
-                name: response.item.name,
-                artist: response.item.artists[0].name,
-                albumArt: response.item.album.images[0].url,
-                lyrics: lyrics,
-              },
-            }),
-          window.scrollTo(0, 0)
-        );
+          getLyrics(options).then(
+            (lyrics) =>
+              this.setState({
+                nowPlaying: {
+                  name: response.item.name,
+                  artist: response.item.artists[0].name,
+                  albumArt: response.item.album.images[0].url,
+                  lyrics: lyrics,
+                },
+              }),
+            window.scrollTo(0, 0)
+          );
+        }
       }
     });
   }
@@ -75,7 +77,7 @@ class App extends Component {
     const lyrics = nowPlaying.lyrics == null ? ["Lyrics Not Found"] : nowPlaying.lyrics.split(/\r?\n/);
 
     return (
-      <div className="App">
+      <div className="app">
         {loggedIn ? (
           <div>
             <div className="lyrics">
