@@ -1,5 +1,5 @@
 # pull official base image
-FROM node:15.2.1-alpine3.10
+FROM node:alpine
 
 # setup client server
 WORKDIR /client
