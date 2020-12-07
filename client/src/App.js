@@ -80,15 +80,15 @@ class App extends Component {
       <div className="app">
         {loggedIn ? (
           <div>
-            <div className="lyrics">
-              {lyrics.map(function (lyric, index) {
-                return lyric === "" ? <br key={index} /> : <p key={index}>{lyric}</p>;
-              })}
-            </div>
             <div className="artist">
               <p className="song-title">{nowPlaying.name}</p>
               <p className="song-artist">{nowPlaying.artist}</p>
               <img className="album-art" src={nowPlaying.albumArt} alt="" />
+            </div>
+            <div className="lyrics">
+              {lyrics.map(function (lyric, index) {
+                return lyric === "" ? <br key={index} /> : <p key={index}>{lyric}</p>;
+              })}
             </div>
           </div>
         ) : (

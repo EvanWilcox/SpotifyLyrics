@@ -1,42 +1,63 @@
 .app {
   text-align: left;
-  margin: 50px 100px;
   font-size: 25px;
   width: "100%";
+  margin: 50px 0px;
+}
+
+@media only screen and (min-width: 1100px) {
+  .artist {
+    width: 655%;
+    margin-left: 45%;
+    position: fixed;
+    padding-top: 100px;
+  }
+
+  .lyrics {
+    float: left;
+    width: 45%;
+    margin: 50px;
+  }
+
+  .app {
+    margin: 50px 100px;
+  }
 }
 
 p {
   margin: 0px;
 }
 
-.lyrics {
+.artist {
+  width: 600px;
   float: left;
-  width: 45%;
-  margin-bottom: 50px;
 }
 
-.artist {
-  width: 655%;
-  margin-left: 45%;
-  position: fixed;
-  padding-top: 100px;
+.lyrics {
+  float: left;
+  width: 500px;
+  padding: 0px 50px;
+  margin-bottom: 50px;
 }
 
 .song-title {
   font-size: 50px;
+  padding: 0px 100px;
 }
 
 .song-artist {
   font-size: 30px;
+  padding: 0px 100px;
 }
 
 .album-art {
   height: 400px;
-  padding-top: 25px;
+  padding: 25px 100px 50px 100px;
 }
 
 .log-in {
   text-align: center;
+  margin-top: 50px;
 }
 
 .log-in-button {
